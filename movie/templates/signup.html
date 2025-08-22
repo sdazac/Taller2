@@ -1,2 +1,19 @@
-<h2>Added {{email }} to mailing list</h2>
-<a href="{% url 'home' %}">Home</a>
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Join our mailing list:</h2>
+<form action="{% url 'signup' %}">
+    <div class="mb-3">
+        <label for="email" class="form-label">Enter your email:</label>
+        <input type="email" class="form-control" name="email" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+</form>
+
+{% if email %}
+    <div class="alert alert-success mt-3">
+        Thanks for signing up, {{ email }}!
+    </div>
+{% endif %}
+
+{% endblock content %}
